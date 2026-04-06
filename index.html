@@ -3,19 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tanjir Hassan Portfolio</title>
+  <title>Tanjir Hasan Portfolio</title>
 
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
-    body { font-family: 'Orbitron', sans-serif; }
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Orbitron', sans-serif;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(56,189,248,0.14), transparent 25%),
+        radial-gradient(circle at 85% 15%, rgba(168,85,247,0.16), transparent 25%),
+        radial-gradient(circle at 50% 80%, rgba(236,72,153,0.12), transparent 30%),
+        linear-gradient(135deg, #020617 0%, #050816 45%, #0b1120 100%);
+      overflow-x: hidden;
+      color: white;
+    }
 
     .fade-up {
       opacity: 0;
       transform: translateY(40px);
-      transition: 0.8s;
+      transition: opacity 0.7s ease, transform 0.7s ease;
     }
 
     .show {
@@ -23,138 +35,685 @@
       transform: translateY(0);
     }
 
+    .glass {
+      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 12px 40px rgba(2,6,23,0.35);
+    }
+
     .glow {
-      box-shadow: 0 0 20px #9333ea;
+      box-shadow: 0 0 25px rgba(168, 85, 247, 0.35), 0 0 60px rgba(56, 189, 248, 0.12);
+    }
+
+    .gradient-border {
+      position: relative;
+      background: linear-gradient(145deg, rgba(10,15,30,0.95), rgba(3,7,18,0.98));
+    }
+
+    .gradient-border::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      padding: 1px;
+      border-radius: 1.5rem;
+      background: linear-gradient(135deg, rgba(56,189,248,0.75), rgba(168,85,247,0.7), rgba(236,72,153,0.55));
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+
+    .floating {
+      animation: float 4.5s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .pulse-glow {
+      animation: pulseGlow 2.5s infinite ease-in-out;
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 0 18px rgba(56,189,248,0.22), 0 0 28px rgba(168,85,247,0.22); }
+      50% { box-shadow: 0 0 30px rgba(236,72,153,0.32), 0 0 42px rgba(56,189,248,0.22); }
+    }
+
+    .shine {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .shine:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 30px 70px rgba(2,6,23,0.45);
+    }
+
+    .bg-orb {
+      position: absolute;
+      border-radius: 9999px;
+      filter: blur(60px);
+      opacity: 0.45;
+      pointer-events: none;
+      animation: drift 10s ease-in-out infinite;
+    }
+
+    .grid-lines {
+      background-image:
+        linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+      background-size: 40px 40px;
+      mask-image: linear-gradient(to bottom, rgba(255,255,255,0.9), transparent 85%);
+    }
+
+    @keyframes drift {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(20px, -18px) scale(1.05); }
+    }
+
+    .text-shimmer {
+      background-size: 200% auto;
+      animation: shimmer 4s linear infinite;
+    }
+
+    @keyframes shimmer {
+      to { background-position: 200% center; }
+    }
+
+    .hero-ring {
+      position: absolute;
+      inset: 50% auto auto 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 9999px;
+      border: 1px solid rgba(255,255,255,0.08);
+      animation: spinSlow 18s linear infinite;
+    }
+
+    .hero-ring.reverse {
+      animation-direction: reverse;
+      animation-duration: 24s;
+    }
+
+    @keyframes spinSlow {
+      from { transform: translate(-50%, -50%) rotate(0deg); }
+      to { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+
+    .marquee-wrap {
+      overflow: hidden;
+      position: relative;
+      mask-image: linear-gradient(to right, transparent, white 10%, white 90%, transparent);
+    }
+
+    .marquee-track {
+      display: flex;
+      gap: 18px;
+      width: max-content;
+      animation: marquee 22s linear infinite;
+    }
+
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    .section-title {
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: -14px;
+      width: 72px;
+      height: 3px;
+      transform: translateX(-50%);
+      border-radius: 9999px;
+      background: linear-gradient(90deg, rgba(56,189,248,1), rgba(168,85,247,1), rgba(236,72,153,1));
+      box-shadow: 0 0 16px rgba(168,85,247,0.45);
+    }
+
+    .tilt-card {
+      transition: box-shadow 0.25s ease;
+    }
+
+    .tilt-card:hover {
+      box-shadow: 0 24px 50px rgba(2,6,23,0.4);
+    }
+
+    .spotlight {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .spotlight::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(103,232,249,0.10), transparent 24%);
+      opacity: 0;
+      transition: opacity 0.2s ease;
+      pointer-events: none;
+    }
+
+    .spotlight:hover::before {
+      opacity: 1;
+    }
+
+    .social-icon {
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .social-icon::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(56,189,248,0.2), rgba(168,85,247,0.2), rgba(236,72,153,0.2));
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+
+    .social-icon:hover::before {
+      opacity: 1;
+    }
+
+    .social-icon:hover {
+      transform: translateY(-4px) scale(1.04);
+      box-shadow: 0 20px 45px rgba(2,6,23,0.35);
+    }
+
+    .social-icon svg {
+      position: relative;
+      z-index: 1;
+    }
+
+    .nav-link {
+      position: relative;
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 0;
+      height: 2px;
+      border-radius: 9999px;
+      background: linear-gradient(90deg, #67e8f9, #a78bfa, #f9a8d4);
+      transition: width 0.25s ease;
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 100%;
+    }
+
+    .nav-link.active {
+      color: #a5f3fc;
+      text-shadow: 0 0 18px rgba(103,232,249,0.18);
+    }
+
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      width: 0%;
+      z-index: 9998;
+      background: linear-gradient(90deg, #67e8f9, #a78bfa, #f9a8d4);
+      box-shadow: 0 0 16px rgba(168,85,247,0.45);
+    }
+
+    .project-media {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-media img {
+      transition: transform 0.35s ease;
+    }
+
+    .project-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      background: linear-gradient(to top, rgba(2,6,23,0.82), rgba(2,6,23,0.22));
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+
+    .gradient-border:hover .project-overlay {
+      opacity: 1;
+    }
+
+    .gradient-border:hover .project-media img {
+      transform: scale(1.04);
+    }
+
+    .overlay-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 18px;
+      border-radius: 9999px;
+      font-size: 0.9rem;
     }
   </style>
 </head>
+<body>
+  <div id="scrollProgress" class="scroll-progress"></div>
 
-<body class="bg-black text-white">
-
-<!-- NAVBAR -->
-<nav class="flex justify-between p-6 sticky top-0 bg-black/80 backdrop-blur z-50">
-  <h1 class="text-purple-500 font-bold text-xl">Tanjir Hassan</h1>
-  <div class="space-x-6">
-    <a href="#home">Home</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
-  </div>
-</nav>
-
-<!-- HERO -->
-<section id="home" class="text-center py-24 fade-up">
-
-  <!-- Profile Image -->
-  <div class="flex justify-center mb-6">
-    <img src="assets/tanjir.jpeg" 
-         class="w-40 h-40 object-cover rounded-full border-4 border-purple-500 shadow-lg">
+  <div class="fixed inset-0 -z-10 overflow-hidden">
+    <div class="grid-lines absolute inset-0"></div>
+    <div class="bg-orb w-72 h-72 bg-cyan-400/30 top-10 left-4"></div>
+    <div class="bg-orb w-80 h-80 bg-fuchsia-500/30 top-1/3 right-0" style="animation-delay: 1.5s;"></div>
+    <div class="bg-orb w-72 h-72 bg-violet-500/30 bottom-10 left-1/3" style="animation-delay: 3s;"></div>
   </div>
 
-  <h1 class="text-5xl font-bold mb-4 bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">
-    Tanjir Hasan
-  </h1>
+  <nav class="sticky top-0 bg-black/60 backdrop-blur-xl z-50 border-b border-white/10">
+    <div class="max-w-7xl mx-auto flex justify-between items-center px-4 sm:px-6 md:px-12 py-4 md:py-5">
+      <h1 class="text-purple-400 font-bold text-lg sm:text-xl md:text-2xl tracking-widest">TANJIR HASAN</h1>
 
-  <p class="text-gray-400 mb-4 text-lg">
-    Frontend Developer | Tailwind CSS Expert
-  </p>
+      <div class="hidden md:flex space-x-6 text-base text-gray-300">
+        <a href="#home" class="nav-link hover:text-cyan-300 transition">Home</a>
+        <a href="#about" class="nav-link hover:text-cyan-300 transition">About</a>
+        <a href="#services" class="nav-link hover:text-cyan-300 transition">Services</a>
+        <a href="#projects" class="nav-link hover:text-cyan-300 transition">Projects</a>
+        <a href="#contact" class="nav-link hover:text-cyan-300 transition">Contact</a>
+      </div>
 
-  <p class="text-gray-500 mb-6 max-w-xl mx-auto">
-    I create modern, responsive, and high-converting websites that help businesses grow online.
-  </p>
-
-  <a href="#projects"
-    class="bg-purple-600 px-8 py-3 rounded-full hover:scale-110 transition glow">
-    View My Work
-  </a>
-</section>
-
-<!-- ABOUT -->
-<section class="py-16 text-center fade-up">
-  <h2 class="text-3xl mb-6">About Me</h2>
-
-  <p class="text-gray-400 max-w-2xl mx-auto">
-    I am a passionate frontend developer with strong skills in HTML, CSS, and Tailwind CSS. 
-    I specialize in building clean, modern, and responsive websites that deliver real results.
-    My goal is to help clients grow their business with high-quality web design.
-  </p>
-</section>
-<!-- SKILLS -->
-<section class="py-16 text-center fade-up">
-  <h2 class="text-3xl mb-10">Skills</h2>
-
-  <div class="flex flex-wrap justify-center gap-6">
-    <span class="bg-gray-900 px-6 py-3 rounded-full">HTML</span>
-    <span class="bg-gray-900 px-6 py-3 rounded-full">CSS</span>
-    <span class="bg-gray-900 px-6 py-3 rounded-full">Tailwind</span>
-    <span class="bg-gray-900 px-6 py-3 rounded-full">JavaScript</span>
-  </div>
-</section>
-
-<!-- PROJECTS -->
-<section id="projects" class="py-20 px-6 fade-up">
-  <h2 class="text-3xl text-center mb-12">Projects</h2>
-
-  <div class="grid md:grid-cols-3 gap-10">
-
-    <!-- Project 1 -->
-    <div class="bg-gray-900 p-6 rounded-xl hover:scale-105 transition">
-      <h3 class="text-xl mb-3">Gaming Landing Page</h3>
-      <p class="text-gray-400 mb-4">Modern console selling landing page</p>
-      <a href="https://tanjir403.github.io/Gen-X-console-Landing-page/" target="_blank"><button class="bg-purple-600 px-4 py-2 rounded">Live</button></a>
+      <button id="menuBtn" class="md:hidden flex flex-col justify-center items-center gap-1.5 w-11 h-11 rounded-full glass" aria-label="Open menu">
+        <span class="w-5 h-0.5 bg-white rounded"></span>
+        <span class="w-5 h-0.5 bg-white rounded"></span>
+        <span class="w-5 h-0.5 bg-white rounded"></span>
+      </button>
     </div>
 
-    <!-- Project 2 -->
-    <div class="bg-gray-900 p-6 rounded-xl hover:scale-105 transition">
-      <h3 class="text-xl mb-3">Job Tracker</h3>
-      <p class="text-gray-400 mb-4">Track job applications easily</p>
-      <a href="https://tanjir403.github.io/Assignment_4/" target="_blank"><button class="bg-purple-600 px-4 py-2 rounded">Live</button></a>
+    <div id="mobileMenu" class="md:hidden hidden px-4 sm:px-6 pb-4">
+      <div class="glass rounded-2xl p-4 flex flex-col gap-3 text-gray-300">
+        <a href="#home" class="nav-link hover:text-cyan-300 transition">Home</a>
+        <a href="#about" class="nav-link hover:text-cyan-300 transition">About</a>
+        <a href="#services" class="nav-link hover:text-cyan-300 transition">Services</a>
+        <a href="#projects" class="nav-link hover:text-cyan-300 transition">Projects</a>
+        <a href="#contact" class="nav-link hover:text-cyan-300 transition">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <section id="home" class="min-h-screen flex items-center justify-center px-4 sm:px-6 md:px-12 py-16 md:py-20 fade-up">
+    <div class="max-w-7xl w-full grid md:grid-cols-2 gap-10 md:gap-14 items-center">
+      <div>
+        <span class="inline-block px-4 py-2 rounded-full glass text-sm text-cyan-200 mb-6 pulse-glow">Available for freelance projects</span>
+        <h1 class="text-shimmer text-4xl sm:text-5xl md:text-7xl font-bold leading-tight mb-6 bg-gradient-to-r from-cyan-300 via-violet-300 to-pink-300 bg-clip-text text-transparent">
+          Premium Web Experiences That Convert
+        </h1>
+        <p class="text-gray-300 text-base sm:text-lg md:text-xl mb-8 max-w-2xl leading-7 sm:leading-8">
+          I design and build modern, responsive, and visually powerful websites for brands that want a premium online presence. Clean UI, smooth animation, and strong conversion focus.
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <a href="#projects" class="bg-gradient-to-r from-cyan-500 via-violet-500 to-pink-500 px-8 py-3 rounded-full font-semibold hover:scale-105 transition glow">View Projects</a>
+          <a href="#contact" class="border border-cyan-400/60 px-8 py-3 rounded-full hover:bg-cyan-400/10 transition">Hire Me</a>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-12">
+          <div class="glass rounded-2xl p-4 text-center reveal-scale tilt-card spotlight">
+            <h3 class="text-2xl font-bold text-cyan-200">10+</h3>
+            <p class="text-sm text-gray-400 mt-1">Projects Built</p>
+          </div>
+          <div class="glass rounded-2xl p-4 text-center reveal-scale tilt-card spotlight">
+            <h3 class="text-2xl font-bold text-cyan-200">100%</h3>
+            <p class="text-sm text-gray-400 mt-1">Responsive</p>
+          </div>
+          <div class="glass rounded-2xl p-4 text-center reveal-scale tilt-card spotlight">
+            <h3 class="text-2xl font-bold text-cyan-200">Fast</h3>
+            <p class="text-sm text-gray-400 mt-1">Performance</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="relative flex justify-center">
+        <div class="hero-ring w-[300px] h-[300px] sm:w-[360px] sm:h-[360px] md:w-[430px] md:h-[430px]"></div>
+        <div class="hero-ring reverse w-[360px] h-[360px] sm:w-[430px] sm:h-[430px] md:w-[520px] md:h-[520px]"></div>
+        <div class="absolute w-72 h-72 md:w-96 md:h-96 bg-purple-600/20 blur-3xl rounded-full"></div>
+        <div class="relative glass rounded-[2rem] p-4 sm:p-6 floating">
+          <img src="assets/tanjir.jpeg" alt="Tanjir Hasan" class="w-64 h-64 sm:w-72 sm:h-72 md:w-96 md:h-[480px] object-cover rounded-[1.5rem] border border-purple-500/30">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-6 sm:py-8 px-4 sm:px-6 md:px-12 fade-up">
+    <div class="max-w-7xl mx-auto marquee-wrap">
+      <div class="marquee-track">
+        <span class="glass rounded-full px-5 py-3 text-cyan-100">Premium UI Design</span>
+        <span class="glass rounded-full px-5 py-3 text-cyan-100">Landing Page Specialist</span>
+        <span class="glass rounded-full px-5 py-3 text-cyan-100">Responsive Development</span>
+        <span class="glass rounded-full px-5 py-3 text-cyan-100">Smooth Animation</span>
+        <span class="glass rounded-full px-5 py-3 text-cyan-100">Tailwind CSS</span>
+        <span class="glass rounded-full px-5 py-3 text-cyan-100">JavaScript</span>
+        <span class="glass rounded-full px-5 py-3 text-cyan-100">Portfolio Websites</span>
+        <span class="glass rounded-full px-5 py-3 text-cyan-100">Business Websites</span>
+        <span class="glass rounded-full px-5 py-3 text-cyan-100">Premium UI Design</span>
+        <span class="glass rounded-full px-5 py-3 text-cyan-100">Landing Page Specialist</span>
+        <span class="glass rounded-full px-5 py-3 text-cyan-100">Responsive Development</span>
+        <span class="glass rounded-full px-5 py-3 text-cyan-100">Smooth Animation</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="py-20 md:py-24 px-4 sm:px-6 md:px-12 fade-up">
+    <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center">
+      <div class="gradient-border rounded-3xl p-8">
+        <h2 class="text-4xl mb-6 section-title">About Me</h2>
+        <p class="text-gray-300 leading-8 mb-5">
+          I am Tanjir Hasan, a frontend developer focused on creating premium digital experiences with modern layouts, clean code, and conversion-driven design.
+        </p>
+        <p class="text-gray-400 leading-8">
+          My strength is turning simple ideas into elegant websites using HTML, CSS, Tailwind CSS, and JavaScript. I care about user experience, visual polish, and business results.
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 gap-5">
+        <div class="glass rounded-3xl p-6 reveal-scale tilt-card spotlight">
+          <h3 class="text-xl mb-3 text-cyan-200">UI Precision</h3>
+          <p class="text-gray-400">Balanced layouts, spacing, typography, and premium visual hierarchy.</p>
+        </div>
+        <div class="glass rounded-3xl p-6 reveal-scale tilt-card spotlight">
+          <h3 class="text-xl mb-3 text-cyan-200">Smooth Animation</h3>
+          <p class="text-gray-400">Subtle motion effects that make websites feel alive and modern.</p>
+        </div>
+        <div class="glass rounded-3xl p-6 reveal-scale tilt-card spotlight">
+          <h3 class="text-xl mb-3 text-cyan-200">Mobile First</h3>
+          <p class="text-gray-400">Responsive interfaces that work beautifully across every screen size.</p>
+        </div>
+        <div class="glass rounded-3xl p-6 reveal-scale tilt-card spotlight">
+          <h3 class="text-xl mb-3 text-cyan-200">Conversion Focus</h3>
+          <p class="text-gray-400">Strategic sections and CTA placement that help businesses grow online.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 px-4 sm:px-6 md:px-12 text-center fade-up">
+    <h2 class="text-4xl mb-12 section-title">Core Skills</h2>
+    <div class="max-w-5xl mx-auto flex flex-wrap justify-center gap-5">
+      <span class="glass px-8 py-4 rounded-full text-cyan-100">HTML</span>
+      <span class="glass px-8 py-4 rounded-full text-cyan-100">CSS</span>
+      <span class="glass px-8 py-4 rounded-full text-cyan-100">Tailwind CSS</span>
+      <span class="glass px-8 py-4 rounded-full text-cyan-100">JavaScript</span>
+      <span class="glass px-8 py-4 rounded-full text-cyan-100">Responsive Design</span>
+      <span class="glass px-8 py-4 rounded-full text-cyan-100">Landing Pages</span>
+      <span class="glass px-8 py-4 rounded-full text-cyan-100">UI Animation</span>
+    </div>
+  </section>
+
+  <section id="services" class="py-20 md:py-24 px-4 sm:px-6 md:px-12 fade-up">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-4xl text-center mb-14 section-title">What I Can Build</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="glass rounded-3xl p-8 shine reveal-scale tilt-card spotlight">
+          <h3 class="text-2xl mb-4 text-cyan-200">Landing Pages</h3>
+          <p class="text-gray-400 leading-7">High-converting landing pages with premium visuals, strong CTA sections, and mobile-first layouts.</p>
+        </div>
+        <div class="glass rounded-3xl p-8 shine reveal-scale tilt-card spotlight">
+          <h3 class="text-2xl mb-4 text-cyan-200">Business Websites</h3>
+          <p class="text-gray-400 leading-7">Clean corporate and small business websites that feel modern, trustworthy, and fast.</p>
+        </div>
+        <div class="glass rounded-3xl p-8 shine reveal-scale tilt-card spotlight">
+          <h3 class="text-2xl mb-4 text-cyan-200">Portfolio Websites</h3>
+          <p class="text-gray-400 leading-7">Stylish portfolios with smooth animations and premium sections that stand out instantly.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="py-20 md:py-24 px-4 sm:px-6 md:px-12 fade-up">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="text-4xl text-center mb-14 section-title">Featured Projects</h2>
+
+      <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-8">
+        <div class="gradient-border rounded-3xl overflow-hidden shine reveal-scale tilt-card spotlight">
+          <div class="project-media">
+            <img src="assets/Next Gen-X Console landing page design.png" alt="Gaming Landing Page Demo" class="w-full h-48 sm:h-56 object-cover">
+            <div class="project-overlay">
+              <a href="https://tanjir403.github.io/Gen-X-console-Landing-page/" target="_blank" class="overlay-btn glass hover:text-cyan-200 transition">Live Demo</a>
+              <a href="#contact" class="overlay-btn glass hover:text-cyan-200 transition">Hire Me</a>
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-2xl mb-3">Gaming Landing Page</h3>
+            <p class="text-gray-400 mb-5">Modern console selling landing page with bold visual style and conversion-focused hero section.</p>
+            <a href="https://tanjir403.github.io/Gen-X-console-Landing-page/" target="_blank" class="inline-block bg-gradient-to-r from-cyan-500 via-violet-500 to-pink-500 px-5 py-3 rounded-full hover:scale-105 transition glow">Live Preview</a>
+          </div>
+        </div>
+
+        <div class="gradient-border rounded-3xl overflow-hidden shine reveal-scale tilt-card spotlight">
+          <div class="project-media">
+            <img src="assets/Job application tracker interface design.png" alt="Job Tracker Demo" class="w-full h-48 sm:h-56 object-cover">
+            <div class="project-overlay">
+              <a href="https://tanjir403.github.io/Assignment_4/" target="_blank" class="overlay-btn glass hover:text-cyan-200 transition">Live Demo</a>
+              <a href="#contact" class="overlay-btn glass hover:text-cyan-200 transition">Work With Me</a>
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-2xl mb-3">Job Tracker</h3>
+            <p class="text-gray-400 mb-5">A practical application interface for organizing and tracking job applications efficiently.</p>
+            <a href="https://tanjir403.github.io/Assignment_4/" target="_blank" class="inline-block bg-gradient-to-r from-cyan-500 via-violet-500 to-pink-500 px-5 py-3 rounded-full hover:scale-105 transition glow">Live Preview</a>
+          </div>
+        </div>
+
+        <div class="gradient-border rounded-3xl overflow-hidden shine reveal-scale tilt-card spotlight">
+          <div class="project-media">
+            <img src="assets/ChatGPT Image Apr 2, 2026, 12_36_27 PM.png" alt="Github Issue Tracker Demo" class="w-full h-48 sm:h-56 object-cover">
+            <div class="project-overlay">
+              <a href="https://tanjir403.github.io/Assignment_5/" target="_blank" class="overlay-btn glass hover:text-cyan-200 transition">Live Demo</a>
+              <a href="#contact" class="overlay-btn glass hover:text-cyan-200 transition">Let’s Talk</a>
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-2xl mb-3">Github Issue Tracker</h3>
+            <p class="text-gray-400 mb-5">A clean and modern issue tracking interface with authentication-focused design.</p>
+            <a href="https://tanjir403.github.io/Assignment_5/" target="_blank" class="inline-block bg-gradient-to-r from-cyan-500 via-violet-500 to-pink-500 px-5 py-3 rounded-full hover:scale-105 transition glow">Live Preview</a>
+          </div>
+        </div>
+
+        <div class="gradient-border rounded-3xl overflow-hidden shine reveal-scale tilt-card spotlight">
+          <div class="project-media">
+            <img src="assets/ChatGPT Image Apr 6, 2026, 07_53_11 PM.png" alt="Rakkhosh Kacchi Ghor Demo" class="w-full h-48 sm:h-56 object-cover">
+            <div class="project-overlay">
+              <a href="https://tanjir403.github.io/RAKKHOSH_KACCHI-GHOR/" target="_blank" class="overlay-btn glass hover:text-cyan-200 transition">Live Demo</a>
+              <a href="#contact" class="overlay-btn glass hover:text-cyan-200 transition">Contact</a>
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-2xl mb-3">Rakkhosh Kacchi Ghor</h3>
+            <p class="text-gray-400 mb-5">A restaurant landing page with strong branding, clean layout, and responsive presentation.</p>
+            <a href="https://tanjir403.github.io/RAKKHOSH_KACCHI-GHOR/" target="_blank" class="inline-block bg-gradient-to-r from-cyan-500 via-violet-500 to-pink-500 px-5 py-3 rounded-full hover:scale-105 transition glow">Live Preview</a>
+          </div>
+        </div>
+
+        <div class="gradient-border rounded-3xl overflow-hidden shine reveal-scale tilt-card spotlight">
+          <div class="project-media">
+            <img src="assets/ChatGPT Image Apr 2, 2026, 12_36_27 PM.png" alt="Digitools Demo" class="w-full h-48 sm:h-56 object-cover">
+            <div class="project-overlay">
+              <a href="https://assignment-6-two-virid.vercel.app/" target="_blank" class="overlay-btn glass hover:text-cyan-200 transition">Live Demo</a>
+              <a href="#contact" class="overlay-btn glass hover:text-cyan-200 transition">Start Project</a>
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-2xl mb-3">Digitools</h3>
+            <p class="text-gray-400 mb-5">A premium digital tools selling website with modern sections and polished UI design.</p>
+            <a href="https://assignment-6-two-virid.vercel.app/" target="_blank" class="inline-block bg-gradient-to-r from-cyan-500 via-violet-500 to-pink-500 px-5 py-3 rounded-full hover:scale-105 transition glow">Live Preview</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 md:py-24 px-4 sm:px-6 md:px-12 fade-up">
+    <div class="max-w-5xl mx-auto glass rounded-[2rem] p-10 md:p-14 text-center reveal-scale tilt-card spotlight">
+      <h2 class="text-4xl mb-6 section-title">Why Clients Choose Me</h2>
+      <p class="text-gray-300 text-lg leading-8 max-w-3xl mx-auto">
+        I combine clean frontend development with premium aesthetics to create websites that not only look impressive but also help businesses build trust, attract attention, and generate more conversions.
+      </p>
+    </div>
+  </section>
+
+  <section id="contact" class="py-20 md:py-24 px-4 sm:px-6 md:px-12 fade-up">
+    <div class="max-w-5xl mx-auto text-center reveal-scale">
+      <h2 class="text-4xl mb-6 section-title">Let’s Build Something Great</h2>
+      <p class="text-gray-400 mb-8 text-lg">Need a premium landing page, business website, or portfolio? Let’s work together.</p>
+      <a href="mailto:tanjirh234@email.com" class="inline-block bg-gradient-to-r from-cyan-500 via-violet-500 to-pink-500 px-10 py-4 rounded-full text-lg font-semibold glow hover:scale-105 transition">Email Me</a>
+    </div>
+  </section>
+
+  <footer class="border-t border-white/10 px-4 sm:px-6 md:px-12 py-12">
+    <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-8 items-center">
+      <div>
+        <h3 class="text-2xl text-cyan-300 mb-3">Tanjir Hasan</h3>
+        <p class="text-gray-400 leading-7 max-w-md">Frontend developer building clean, modern, and premium websites with strong visual impact.</p>
+      </div>
+
+      <div class="md:text-right">
+        <h4 class="text-lg mb-4">Connect With Me</h4>
+        <div class="flex md:justify-end flex-wrap gap-3 sm:gap-4">
+          <a href="https://wa.me/8801326814284" target="_blank" class="social-icon glass w-14 h-14 rounded-2xl flex items-center justify-center hover:text-cyan-200 transition" aria-label="WhatsApp">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"><path d="M12 2a10 10 0 0 0-8.66 15l-1.1 4.02 4.12-1.08A10 10 0 1 0 12 2Zm5.04 14.47c-.21.58-1.2 1.1-1.66 1.17-.43.07-.98.1-1.58-.1-.37-.12-.84-.27-1.45-.53-2.56-1.1-4.23-3.68-4.36-3.85-.13-.17-1.04-1.39-1.04-2.64 0-1.25.65-1.87.88-2.13.23-.26.5-.32.67-.32.17 0 .34 0 .49.01.16.01.37-.06.58.44.21.5.72 1.73.78 1.86.06.13.1.29.02.46-.08.17-.12.28-.25.43-.13.15-.27.34-.39.45-.13.13-.26.28-.11.55.15.27.68 1.12 1.46 1.82 1.01.9 1.86 1.19 2.13 1.33.27.13.42.11.58-.07.16-.18.67-.78.85-1.05.18-.27.36-.22.61-.13.25.09 1.6.75 1.87.89.27.13.45.2.51.31.06.11.06.65-.15 1.22Z"/></svg>
+          </a>
+          <a href="https://www.facebook.com/Tanjirh38" target="_blank" class="social-icon glass w-14 h-14 rounded-2xl flex items-center justify-center hover:text-cyan-200 transition" aria-label="Facebook">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"><path d="M13.5 22v-8h2.7l.4-3h-3.1V9.1c0-.87.25-1.46 1.5-1.46H16.7V4.9c-.3-.04-1.3-.12-2.47-.12-2.45 0-4.13 1.5-4.13 4.24V11H7.3v3h2.8v8h3.4Z"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/tanjirhassan/" target="_blank" class="social-icon glass w-14 h-14 rounded-2xl flex items-center justify-center hover:text-cyan-200 transition" aria-label="LinkedIn">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"><path d="M6.94 8.5A1.94 1.94 0 1 1 6.94 4.62a1.94 1.94 0 0 1 0 3.88ZM8.5 9.98H5.38V20h3.12V9.98Zm5 0h-3v10.03h3V14.7c0-2.8 3.64-3.03 3.64 0v5.3h3.12v-6.38c0-4.97-5.68-4.79-6.76-2.34V9.98Z"/></svg>
+          </a>
+        </div>
+      </div>
     </div>
 
-    <!-- Project 3 -->
-    <div class="bg-gray-900 p-6 rounded-xl hover:scale-105 transition">
-      <h3 class="text-xl mb-3">Github Issue Tracker</h3>
-      <p class="text-gray-400 mb-4">Clean authentication design</p>
-      <a href="https://tanjir403.github.io/Assignment_5/" target="_blank"><button class="bg-purple-600 px-4 py-2 rounded">Live</button></a>
+    <div class="text-center mt-10 text-gray-500 text-sm">
+      © 2026 Tanjir Hasan. All rights reserved.
     </div>
+  </footer>
 
-  </div>
-</section>
+  <script>
+    const elements = document.querySelectorAll('.fade-up, .reveal-scale');
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileLinks = document.querySelectorAll('#mobileMenu a');
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sections = document.querySelectorAll('section[id]');
+    const scrollProgress = document.getElementById('scrollProgress');
+    const tiltCards = document.querySelectorAll('.tilt-card');
 
-<!-- CONTACT -->
-<section id="contact" class="text-center py-20 fade-up">
-  <h2 class="text-3xl mb-6">Contact Me</h2>
+    function showOnScroll() {
+      elements.forEach((el) => {
+        const top = el.getBoundingClientRect().top;
+        if (top < window.innerHeight - 80) {
+          el.classList.add('show');
+        }
+      });
+    }
 
-  <p class="text-gray-400 mb-6">
-    Let's work together 🚀
-  </p>
+    function updateActiveNav() {
+      let current = '';
+      sections.forEach((section) => {
+        const sectionTop = section.offsetTop - 140;
+        if (window.scrollY >= sectionTop) {
+          current = section.getAttribute('id') || '';
+        }
+      });
 
-  <a href="mailto:tanjirh234@email.com"
-    class="bg-gradient-to-r from-purple-600 to-pink-500 px-10 py-3 rounded-full glow">
-    Email Me
-  </a>
-</section>
+      navLinks.forEach((link) => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+          link.classList.add('active');
+        }
+      });
+    }
 
-<!-- FOOTER -->
-<footer class="text-center p-6 border-t border-gray-800">
-  <p class="text-gray-500">© 2026 Tanjir Hasan</p>
-</footer>
+    function updateScrollProgress() {
+      if (!scrollProgress) return;
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      scrollProgress.style.width = `${progress}%`;
+    }
 
-<!-- JS -->
-<script>
-  const elements = document.querySelectorAll(".fade-up");
+    function setupSpotlightCards() {
+      if (!tiltCards.length) return;
+      tiltCards.forEach((card) => {
+        if (!card) return;
+        card.addEventListener('mousemove', (e) => {
+          if (window.innerWidth < 768) return;
+          const rect = card.getBoundingClientRect();
+          if (!rect.width || !rect.height) return;
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          card.style.setProperty('--x', `${(x / rect.width) * 100}%`);
+          card.style.setProperty('--y', `${(y / rect.height) * 100}%`);
+        });
+      });
+    }
 
-  function showOnScroll() {
-    elements.forEach(el => {
-      const top = el.getBoundingClientRect().top;
-      if (top < window.innerHeight - 100) {
-        el.classList.add("show");
+    function setupMobileMenu() {
+      if (menuBtn && mobileMenu) {
+        menuBtn.addEventListener('click', () => {
+          mobileMenu.classList.toggle('hidden');
+        });
       }
+
+      mobileLinks.forEach((link) => {
+        link.addEventListener('click', () => {
+          if (mobileMenu) mobileMenu.classList.add('hidden');
+        });
+      });
+    }
+
+    function runSelfTests() {
+      const tests = [
+        ['scroll progress exists', !!scrollProgress],
+        ['menu button exists', !!menuBtn],
+        ['mobile menu exists', !!mobileMenu],
+        ['at least one section exists', sections.length > 0],
+        ['tilt cards query succeeded', tiltCards.length >= 0]
+      ];
+
+      const failed = tests.filter(([, passed]) => !passed);
+      if (failed.length) {
+        console.warn('Portfolio self-test warnings:', failed.map(([name]) => name));
+      } else {
+        console.info('Portfolio self-tests passed.');
+      }
+    }
+
+    setupMobileMenu();
+    setupSpotlightCards();
+    showOnScroll();
+    updateActiveNav();
+    updateScrollProgress();
+    runSelfTests();
+
+    window.addEventListener('scroll', () => {
+      showOnScroll();
+      updateActiveNav();
+      updateScrollProgress();
+    }, { passive: true });
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 768 && mobileMenu) {
+        mobileMenu.classList.add('hidden');
+      }
+      updateScrollProgress();
     });
-  }
-
-  window.addEventListener("scroll", showOnScroll);
-  showOnScroll();
-</script>
-
+  </script>
 </body>
 </html>
