@@ -16,9 +16,9 @@
     body {
       font-family: 'Orbitron', sans-serif;
       background:
-        radial-gradient(circle at 15% 20%, rgba(56,189,248,0.14), transparent 25%),
-        radial-gradient(circle at 85% 15%, rgba(168,85,247,0.16), transparent 25%),
-        radial-gradient(circle at 50% 80%, rgba(236,72,153,0.12), transparent 30%),
+        radial-gradient(circle at 15% 20%, rgba(56,189,248,0.10), transparent 25%),
+        radial-gradient(circle at 85% 15%, rgba(168,85,247,0.10), transparent 25%),
+        radial-gradient(circle at 50% 80%, rgba(236,72,153,0.08), transparent 30%),
         linear-gradient(135deg, #020617 0%, #050816 45%, #0b1120 100%);
       overflow-x: hidden;
       color: white;
@@ -26,8 +26,8 @@
 
     .fade-up {
       opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
+      transform: translateY(24px);
+      transition: opacity 0.45s ease, transform 0.45s ease;
     }
 
     .show {
@@ -36,14 +36,13 @@
     }
 
     .glass {
-      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
-      backdrop-filter: blur(14px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 12px 40px rgba(2,6,23,0.35);
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 10px 28px rgba(2,6,23,0.22);
     }
 
     .glow {
-      box-shadow: 0 0 25px rgba(168, 85, 247, 0.35), 0 0 60px rgba(56, 189, 248, 0.12);
+      box-shadow: 0 0 18px rgba(168, 85, 247, 0.18);
     }
 
     .gradient-border {
@@ -57,106 +56,11 @@
       inset: 0;
       padding: 1px;
       border-radius: 1.5rem;
-      background: linear-gradient(135deg, rgba(56,189,248,0.75), rgba(168,85,247,0.7), rgba(236,72,153,0.55));
+      background: linear-gradient(135deg, rgba(56,189,248,0.45), rgba(168,85,247,0.4), rgba(236,72,153,0.35));
       -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
       -webkit-mask-composite: xor;
       mask-composite: exclude;
       pointer-events: none;
-    }
-
-    .floating {
-      animation: float 4.5s ease-in-out infinite;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
-
-    .pulse-glow {
-      animation: pulseGlow 2.5s infinite ease-in-out;
-    }
-
-    @keyframes pulseGlow {
-      0%, 100% { box-shadow: 0 0 18px rgba(56,189,248,0.22), 0 0 28px rgba(168,85,247,0.22); }
-      50% { box-shadow: 0 0 30px rgba(236,72,153,0.32), 0 0 42px rgba(56,189,248,0.22); }
-    }
-
-    .shine {
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .shine:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 30px 70px rgba(2,6,23,0.45);
-    }
-
-    .bg-orb {
-      position: absolute;
-      border-radius: 9999px;
-      filter: blur(60px);
-      opacity: 0.45;
-      pointer-events: none;
-      animation: drift 10s ease-in-out infinite;
-    }
-
-    .grid-lines {
-      background-image:
-        linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
-      background-size: 40px 40px;
-      mask-image: linear-gradient(to bottom, rgba(255,255,255,0.9), transparent 85%);
-    }
-
-    @keyframes drift {
-      0%, 100% { transform: translate(0, 0) scale(1); }
-      50% { transform: translate(20px, -18px) scale(1.05); }
-    }
-
-    .text-shimmer {
-      background-size: 200% auto;
-      animation: shimmer 4s linear infinite;
-    }
-
-    @keyframes shimmer {
-      to { background-position: 200% center; }
-    }
-
-    .hero-ring {
-      position: absolute;
-      inset: 50% auto auto 50%;
-      transform: translate(-50%, -50%);
-      border-radius: 9999px;
-      border: 1px solid rgba(255,255,255,0.08);
-      animation: spinSlow 18s linear infinite;
-    }
-
-    .hero-ring.reverse {
-      animation-direction: reverse;
-      animation-duration: 24s;
-    }
-
-    @keyframes spinSlow {
-      from { transform: translate(-50%, -50%) rotate(0deg); }
-      to { transform: translate(-50%, -50%) rotate(360deg); }
-    }
-
-    .marquee-wrap {
-      overflow: hidden;
-      position: relative;
-      mask-image: linear-gradient(to right, transparent, white 10%, white 90%, transparent);
-    }
-
-    .marquee-track {
-      display: flex;
-      gap: 18px;
-      width: max-content;
-      animation: marquee 22s linear infinite;
-    }
-
-    @keyframes marquee {
-      from { transform: translateX(0); }
-      to { transform: translateX(-50%); }
     }
 
     .section-title {
@@ -174,63 +78,6 @@
       transform: translateX(-50%);
       border-radius: 9999px;
       background: linear-gradient(90deg, rgba(56,189,248,1), rgba(168,85,247,1), rgba(236,72,153,1));
-      box-shadow: 0 0 16px rgba(168,85,247,0.45);
-    }
-
-    .tilt-card {
-      transition: box-shadow 0.25s ease;
-    }
-
-    .tilt-card:hover {
-      box-shadow: 0 24px 50px rgba(2,6,23,0.4);
-    }
-
-    .spotlight {
-      position: relative;
-      overflow: hidden;
-    }
-
-    .spotlight::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(103,232,249,0.10), transparent 24%);
-      opacity: 0;
-      transition: opacity 0.2s ease;
-      pointer-events: none;
-    }
-
-    .spotlight:hover::before {
-      opacity: 1;
-    }
-
-    .social-icon {
-      position: relative;
-      overflow: hidden;
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-    }
-
-    .social-icon::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(56,189,248,0.2), rgba(168,85,247,0.2), rgba(236,72,153,0.2));
-      opacity: 0;
-      transition: opacity 0.25s ease;
-    }
-
-    .social-icon:hover::before {
-      opacity: 1;
-    }
-
-    .social-icon:hover {
-      transform: translateY(-4px) scale(1.04);
-      box-shadow: 0 20px 45px rgba(2,6,23,0.35);
-    }
-
-    .social-icon svg {
-      position: relative;
-      z-index: 1;
     }
 
     .nav-link {
@@ -256,7 +103,7 @@
 
     .nav-link.active {
       color: #a5f3fc;
-      text-shadow: 0 0 18px rgba(103,232,249,0.18);
+      text-shadow: 0 0 12px rgba(103,232,249,0.12);
     }
 
     .scroll-progress {
@@ -267,7 +114,6 @@
       width: 0%;
       z-index: 9998;
       background: linear-gradient(90deg, #67e8f9, #a78bfa, #f9a8d4);
-      box-shadow: 0 0 16px rgba(168,85,247,0.45);
     }
 
     .project-media {
@@ -276,36 +122,19 @@
     }
 
     .project-media img {
-      transition: transform 0.35s ease;
-    }
-
-    .project-overlay {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      background: linear-gradient(to top, rgba(2,6,23,0.82), rgba(2,6,23,0.22));
-      opacity: 0;
-      transition: opacity 0.25s ease;
-    }
-
-    .gradient-border:hover .project-overlay {
-      opacity: 1;
+      transition: transform 0.25s ease;
     }
 
     .gradient-border:hover .project-media img {
-      transform: scale(1.04);
+      transform: scale(1.02);
     }
 
-    .overlay-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 12px 18px;
-      border-radius: 9999px;
-      font-size: 0.9rem;
+    .social-icon {
+      transition: transform 0.2s ease;
+    }
+
+    .social-icon:hover {
+      transform: translateY(-2px);
     }
   </style>
 </head>
@@ -313,13 +142,10 @@
   <div id="scrollProgress" class="scroll-progress"></div>
 
   <div class="fixed inset-0 -z-10 overflow-hidden">
-    <div class="grid-lines absolute inset-0"></div>
-    <div class="bg-orb w-72 h-72 bg-cyan-400/30 top-10 left-4"></div>
-    <div class="bg-orb w-80 h-80 bg-fuchsia-500/30 top-1/3 right-0" style="animation-delay: 1.5s;"></div>
-    <div class="bg-orb w-72 h-72 bg-violet-500/30 bottom-10 left-1/3" style="animation-delay: 3s;"></div>
+    <div class="absolute inset-0 opacity-40 [background-image:linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] [background-size:40px_40px]"></div>
   </div>
 
-  <nav class="sticky top-0 bg-black/60 backdrop-blur-xl z-50 border-b border-white/10">
+  <nav class="sticky top-0 bg-black/60 backdrop-blur-md z-50 border-b border-white/10">
     <div class="max-w-7xl mx-auto flex justify-between items-center px-4 sm:px-6 md:px-12 py-4 md:py-5">
       <h1 class="text-purple-400 font-bold text-lg sm:text-xl md:text-2xl tracking-widest">TANJIR HASAN</h1>
 
@@ -352,8 +178,8 @@
   <section id="home" class="min-h-screen flex items-center justify-center px-4 sm:px-6 md:px-12 py-16 md:py-20 fade-up">
     <div class="max-w-7xl w-full grid md:grid-cols-2 gap-10 md:gap-14 items-center">
       <div>
-        <span class="inline-block px-4 py-2 rounded-full glass text-sm text-cyan-200 mb-6 pulse-glow">Available for freelance projects</span>
-        <h1 class="text-shimmer text-4xl sm:text-5xl md:text-7xl font-bold leading-tight mb-6 bg-gradient-to-r from-cyan-300 via-violet-300 to-pink-300 bg-clip-text text-transparent">
+        <span class="inline-block px-4 py-2 rounded-full glass text-sm text-cyan-200 mb-6">Available for freelance projects</span>
+        <h1 class="text-4xl sm:text-5xl md:text-7xl font-bold leading-tight mb-6 bg-gradient-to-r from-cyan-300 via-violet-300 to-pink-300 bg-clip-text text-transparent">
           Premium Web Experiences That Convert
         </h1>
         <p class="text-gray-300 text-base sm:text-lg md:text-xl mb-8 max-w-2xl leading-7 sm:leading-8">
@@ -365,15 +191,15 @@
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-12">
-          <div class="glass rounded-2xl p-4 text-center reveal-scale tilt-card spotlight">
+          <div class="glass rounded-2xl p-4 text-center fade-up">
             <h3 class="text-2xl font-bold text-cyan-200">10+</h3>
             <p class="text-sm text-gray-400 mt-1">Projects Built</p>
           </div>
-          <div class="glass rounded-2xl p-4 text-center reveal-scale tilt-card spotlight">
+          <div class="glass rounded-2xl p-4 text-center fade-up">
             <h3 class="text-2xl font-bold text-cyan-200">100%</h3>
             <p class="text-sm text-gray-400 mt-1">Responsive</p>
           </div>
-          <div class="glass rounded-2xl p-4 text-center reveal-scale tilt-card spotlight">
+          <div class="glass rounded-2xl p-4 text-center fade-up">
             <h3 class="text-2xl font-bold text-cyan-200">Fast</h3>
             <p class="text-sm text-gray-400 mt-1">Performance</p>
           </div>
@@ -381,31 +207,9 @@
       </div>
 
       <div class="relative flex justify-center">
-        <div class="hero-ring w-[300px] h-[300px] sm:w-[360px] sm:h-[360px] md:w-[430px] md:h-[430px]"></div>
-        <div class="hero-ring reverse w-[360px] h-[360px] sm:w-[430px] sm:h-[430px] md:w-[520px] md:h-[520px]"></div>
-        <div class="absolute w-72 h-72 md:w-96 md:h-96 bg-purple-600/20 blur-3xl rounded-full"></div>
-        <div class="relative glass rounded-[2rem] p-4 sm:p-6 floating">
-          <img src="assets/tanjir.jpeg" alt="Tanjir Hasan" class="w-64 h-64 sm:w-72 sm:h-72 md:w-96 md:h-[480px] object-cover rounded-[1.5rem] border border-purple-500/30">
+        <div class="relative glass rounded-[2rem] p-4 sm:p-6">
+          <img src="assets/tanjir.jpeg" alt="Tanjir Hasan" class="w-64 h-64 sm:w-72 sm:h-72 md:w-96 md:h-[480px] object-cover rounded-[1.5rem] border border-purple-500/20">
         </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="py-6 sm:py-8 px-4 sm:px-6 md:px-12 fade-up">
-    <div class="max-w-7xl mx-auto marquee-wrap">
-      <div class="marquee-track">
-        <span class="glass rounded-full px-5 py-3 text-cyan-100">Premium UI Design</span>
-        <span class="glass rounded-full px-5 py-3 text-cyan-100">Landing Page Specialist</span>
-        <span class="glass rounded-full px-5 py-3 text-cyan-100">Responsive Development</span>
-        <span class="glass rounded-full px-5 py-3 text-cyan-100">Smooth Animation</span>
-        <span class="glass rounded-full px-5 py-3 text-cyan-100">Tailwind CSS</span>
-        <span class="glass rounded-full px-5 py-3 text-cyan-100">JavaScript</span>
-        <span class="glass rounded-full px-5 py-3 text-cyan-100">Portfolio Websites</span>
-        <span class="glass rounded-full px-5 py-3 text-cyan-100">Business Websites</span>
-        <span class="glass rounded-full px-5 py-3 text-cyan-100">Premium UI Design</span>
-        <span class="glass rounded-full px-5 py-3 text-cyan-100">Landing Page Specialist</span>
-        <span class="glass rounded-full px-5 py-3 text-cyan-100">Responsive Development</span>
-        <span class="glass rounded-full px-5 py-3 text-cyan-100">Smooth Animation</span>
       </div>
     </div>
   </section>
@@ -423,19 +227,19 @@
       </div>
 
       <div class="grid sm:grid-cols-2 gap-5">
-        <div class="glass rounded-3xl p-6 reveal-scale tilt-card spotlight">
+        <div class="glass rounded-3xl p-6 fade-up">
           <h3 class="text-xl mb-3 text-cyan-200">UI Precision</h3>
           <p class="text-gray-400">Balanced layouts, spacing, typography, and premium visual hierarchy.</p>
         </div>
-        <div class="glass rounded-3xl p-6 reveal-scale tilt-card spotlight">
+        <div class="glass rounded-3xl p-6 fade-up">
           <h3 class="text-xl mb-3 text-cyan-200">Smooth Animation</h3>
           <p class="text-gray-400">Subtle motion effects that make websites feel alive and modern.</p>
         </div>
-        <div class="glass rounded-3xl p-6 reveal-scale tilt-card spotlight">
+        <div class="glass rounded-3xl p-6 fade-up">
           <h3 class="text-xl mb-3 text-cyan-200">Mobile First</h3>
           <p class="text-gray-400">Responsive interfaces that work beautifully across every screen size.</p>
         </div>
-        <div class="glass rounded-3xl p-6 reveal-scale tilt-card spotlight">
+        <div class="glass rounded-3xl p-6 fade-up">
           <h3 class="text-xl mb-3 text-cyan-200">Conversion Focus</h3>
           <p class="text-gray-400">Strategic sections and CTA placement that help businesses grow online.</p>
         </div>
@@ -460,15 +264,15 @@
     <div class="max-w-6xl mx-auto">
       <h2 class="text-4xl text-center mb-14 section-title">What I Can Build</h2>
       <div class="grid md:grid-cols-3 gap-8">
-        <div class="glass rounded-3xl p-8 shine reveal-scale tilt-card spotlight">
+        <div class="glass rounded-3xl p-8">
           <h3 class="text-2xl mb-4 text-cyan-200">Landing Pages</h3>
           <p class="text-gray-400 leading-7">High-converting landing pages with premium visuals, strong CTA sections, and mobile-first layouts.</p>
         </div>
-        <div class="glass rounded-3xl p-8 shine reveal-scale tilt-card spotlight">
+        <div class="glass rounded-3xl p-8">
           <h3 class="text-2xl mb-4 text-cyan-200">Business Websites</h3>
           <p class="text-gray-400 leading-7">Clean corporate and small business websites that feel modern, trustworthy, and fast.</p>
         </div>
-        <div class="glass rounded-3xl p-8 shine reveal-scale tilt-card spotlight">
+        <div class="glass rounded-3xl p-8">
           <h3 class="text-2xl mb-4 text-cyan-200">Portfolio Websites</h3>
           <p class="text-gray-400 leading-7">Stylish portfolios with smooth animations and premium sections that stand out instantly.</p>
         </div>
@@ -481,13 +285,9 @@
       <h2 class="text-4xl text-center mb-14 section-title">Featured Projects</h2>
 
       <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-8">
-        <div class="gradient-border rounded-3xl overflow-hidden shine reveal-scale tilt-card spotlight">
+        <div class="gradient-border rounded-3xl overflow-hidden">
           <div class="project-media">
             <img src="assets/Next Gen-X Console landing page design.png" alt="Gaming Landing Page Demo" class="w-full h-48 sm:h-56 object-cover">
-            <div class="project-overlay">
-              <a href="https://tanjir403.github.io/Gen-X-console-Landing-page/" target="_blank" class="overlay-btn glass hover:text-cyan-200 transition">Live Demo</a>
-              <a href="#contact" class="overlay-btn glass hover:text-cyan-200 transition">Hire Me</a>
-            </div>
           </div>
           <div class="p-6">
             <h3 class="text-2xl mb-3">Gaming Landing Page</h3>
@@ -496,13 +296,9 @@
           </div>
         </div>
 
-        <div class="gradient-border rounded-3xl overflow-hidden shine reveal-scale tilt-card spotlight">
+        <div class="gradient-border rounded-3xl overflow-hidden">
           <div class="project-media">
             <img src="assets/Job application tracker interface design.png" alt="Job Tracker Demo" class="w-full h-48 sm:h-56 object-cover">
-            <div class="project-overlay">
-              <a href="https://tanjir403.github.io/Assignment_4/" target="_blank" class="overlay-btn glass hover:text-cyan-200 transition">Live Demo</a>
-              <a href="#contact" class="overlay-btn glass hover:text-cyan-200 transition">Work With Me</a>
-            </div>
           </div>
           <div class="p-6">
             <h3 class="text-2xl mb-3">Job Tracker</h3>
@@ -511,13 +307,9 @@
           </div>
         </div>
 
-        <div class="gradient-border rounded-3xl overflow-hidden shine reveal-scale tilt-card spotlight">
+        <div class="gradient-border rounded-3xl overflow-hidden">
           <div class="project-media">
             <img src="assets/ChatGPT Image Apr 2, 2026, 12_36_27 PM.png" alt="Github Issue Tracker Demo" class="w-full h-48 sm:h-56 object-cover">
-            <div class="project-overlay">
-              <a href="https://tanjir403.github.io/Assignment_5/" target="_blank" class="overlay-btn glass hover:text-cyan-200 transition">Live Demo</a>
-              <a href="#contact" class="overlay-btn glass hover:text-cyan-200 transition">Let’s Talk</a>
-            </div>
           </div>
           <div class="p-6">
             <h3 class="text-2xl mb-3">Github Issue Tracker</h3>
@@ -526,13 +318,9 @@
           </div>
         </div>
 
-        <div class="gradient-border rounded-3xl overflow-hidden shine reveal-scale tilt-card spotlight">
+        <div class="gradient-border rounded-3xl overflow-hidden">
           <div class="project-media">
             <img src="assets/ChatGPT Image Apr 6, 2026, 07_53_11 PM.png" alt="Rakkhosh Kacchi Ghor Demo" class="w-full h-48 sm:h-56 object-cover">
-            <div class="project-overlay">
-              <a href="https://tanjir403.github.io/RAKKHOSH_KACCHI-GHOR/" target="_blank" class="overlay-btn glass hover:text-cyan-200 transition">Live Demo</a>
-              <a href="#contact" class="overlay-btn glass hover:text-cyan-200 transition">Contact</a>
-            </div>
           </div>
           <div class="p-6">
             <h3 class="text-2xl mb-3">Rakkhosh Kacchi Ghor</h3>
@@ -541,13 +329,9 @@
           </div>
         </div>
 
-        <div class="gradient-border rounded-3xl overflow-hidden shine reveal-scale tilt-card spotlight">
+        <div class="gradient-border rounded-3xl overflow-hidden">
           <div class="project-media">
             <img src="assets/ChatGPT Image Apr 2, 2026, 12_36_27 PM.png" alt="Digitools Demo" class="w-full h-48 sm:h-56 object-cover">
-            <div class="project-overlay">
-              <a href="https://assignment-6-two-virid.vercel.app/" target="_blank" class="overlay-btn glass hover:text-cyan-200 transition">Live Demo</a>
-              <a href="#contact" class="overlay-btn glass hover:text-cyan-200 transition">Start Project</a>
-            </div>
           </div>
           <div class="p-6">
             <h3 class="text-2xl mb-3">Digitools</h3>
@@ -560,7 +344,7 @@
   </section>
 
   <section class="py-20 md:py-24 px-4 sm:px-6 md:px-12 fade-up">
-    <div class="max-w-5xl mx-auto glass rounded-[2rem] p-10 md:p-14 text-center reveal-scale tilt-card spotlight">
+    <div class="max-w-5xl mx-auto glass rounded-[2rem] p-10 md:p-14 text-center">
       <h2 class="text-4xl mb-6 section-title">Why Clients Choose Me</h2>
       <p class="text-gray-300 text-lg leading-8 max-w-3xl mx-auto">
         I combine clean frontend development with premium aesthetics to create websites that not only look impressive but also help businesses build trust, attract attention, and generate more conversions.
@@ -569,7 +353,7 @@
   </section>
 
   <section id="contact" class="py-20 md:py-24 px-4 sm:px-6 md:px-12 fade-up">
-    <div class="max-w-5xl mx-auto text-center reveal-scale">
+    <div class="max-w-5xl mx-auto text-center">
       <h2 class="text-4xl mb-6 section-title">Let’s Build Something Great</h2>
       <p class="text-gray-400 mb-8 text-lg">Need a premium landing page, business website, or portfolio? Let’s work together.</p>
       <a href="mailto:tanjirh234@email.com" class="inline-block bg-gradient-to-r from-cyan-500 via-violet-500 to-pink-500 px-10 py-4 rounded-full text-lg font-semibold glow hover:scale-105 transition">Email Me</a>
@@ -605,14 +389,13 @@
   </footer>
 
   <script>
-    const elements = document.querySelectorAll('.fade-up, .reveal-scale');
+    const elements = document.querySelectorAll('.fade-up');
     const menuBtn = document.getElementById('menuBtn');
     const mobileMenu = document.getElementById('mobileMenu');
     const mobileLinks = document.querySelectorAll('#mobileMenu a');
     const navLinks = document.querySelectorAll('.nav-link');
     const sections = document.querySelectorAll('section[id]');
     const scrollProgress = document.getElementById('scrollProgress');
-    const tiltCards = document.querySelectorAll('.tilt-card');
 
     function showOnScroll() {
       elements.forEach((el) => {
@@ -648,59 +431,21 @@
       scrollProgress.style.width = `${progress}%`;
     }
 
-    function setupSpotlightCards() {
-      if (!tiltCards.length) return;
-      tiltCards.forEach((card) => {
-        if (!card) return;
-        card.addEventListener('mousemove', (e) => {
-          if (window.innerWidth < 768) return;
-          const rect = card.getBoundingClientRect();
-          if (!rect.width || !rect.height) return;
-          const x = e.clientX - rect.left;
-          const y = e.clientY - rect.top;
-          card.style.setProperty('--x', `${(x / rect.width) * 100}%`);
-          card.style.setProperty('--y', `${(y / rect.height) * 100}%`);
-        });
+    if (menuBtn && mobileMenu) {
+      menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
       });
     }
 
-    function setupMobileMenu() {
-      if (menuBtn && mobileMenu) {
-        menuBtn.addEventListener('click', () => {
-          mobileMenu.classList.toggle('hidden');
-        });
-      }
-
-      mobileLinks.forEach((link) => {
-        link.addEventListener('click', () => {
-          if (mobileMenu) mobileMenu.classList.add('hidden');
-        });
+    mobileLinks.forEach((link) => {
+      link.addEventListener('click', () => {
+        if (mobileMenu) mobileMenu.classList.add('hidden');
       });
-    }
+    });
 
-    function runSelfTests() {
-      const tests = [
-        ['scroll progress exists', !!scrollProgress],
-        ['menu button exists', !!menuBtn],
-        ['mobile menu exists', !!mobileMenu],
-        ['at least one section exists', sections.length > 0],
-        ['tilt cards query succeeded', tiltCards.length >= 0]
-      ];
-
-      const failed = tests.filter(([, passed]) => !passed);
-      if (failed.length) {
-        console.warn('Portfolio self-test warnings:', failed.map(([name]) => name));
-      } else {
-        console.info('Portfolio self-tests passed.');
-      }
-    }
-
-    setupMobileMenu();
-    setupSpotlightCards();
     showOnScroll();
     updateActiveNav();
     updateScrollProgress();
-    runSelfTests();
 
     window.addEventListener('scroll', () => {
       showOnScroll();
